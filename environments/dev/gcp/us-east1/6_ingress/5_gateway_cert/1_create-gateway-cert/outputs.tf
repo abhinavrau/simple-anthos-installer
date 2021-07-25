@@ -37,7 +37,8 @@ output "algorithm" {
 
 # CA - TLS private key
 output "ca_private_key_pem" {
-  value = length(tls_private_key.ca.*.private_key_pem) > 0 ? tls_private_key.ca.*.private_key_pem[0] : ""
+  sensitive = true
+  value     = length(tls_private_key.ca.*.private_key_pem) > 0 ? tls_private_key.ca.*.private_key_pem[0] : ""
 }
 output "ca_public_key_pem" {
   value = length(tls_private_key.ca.*.public_key_pem) > 0 ? tls_private_key.ca.*.public_key_pem[0] : ""
@@ -70,7 +71,8 @@ output "ca_cert_validity_end_time" {
 
 # Leaf - TLS private key
 output "leaf_private_key_pem" {
-  value = length(tls_private_key.leaf.*.private_key_pem) > 0 ? tls_private_key.leaf.*.private_key_pem[0] : ""
+  sensitive = true
+  value     = length(tls_private_key.leaf.*.private_key_pem) > 0 ? tls_private_key.leaf.*.private_key_pem[0] : ""
 }
 
 output "leaf_private_key_filename" {

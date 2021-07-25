@@ -38,10 +38,6 @@ generate "backend" {
 }
 
 
-dependencies {
-  paths = ["../../4_acm/gke_1"]
-}
-
 terraform {
 
   source = "."
@@ -50,11 +46,11 @@ terraform {
 
 inputs = {
 
-  name                  = "self-signed-ingress-gateway-cert"
+  name                  = "self-signed-ingress-gateway-cert-1"
   validity_period_hours = 9552 # Max life of TLS cert is 398 days
   ca_common_name        = "Self signed CA for mesh ingress gateway"
   organization_name     = "Simple_Anthos-Installer"
   common_name           = "${local.environment_name}-frontend.endpoints.${local.project_id}.cloud.goog"
-  download_certs = true
+  download_certs = false
 
 }
