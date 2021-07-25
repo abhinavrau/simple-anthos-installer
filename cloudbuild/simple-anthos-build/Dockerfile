@@ -11,6 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.FROM gcr.io/cloud-builders/gcloud as builder
+FROM gcr.io/cloud-builders/gcloud as builder
 
 ARG TERRAFORM_VERSION
 ARG TERRAFORM_VERSION_SHA256SUM
@@ -59,8 +60,10 @@ COPY --from=builder /builder/terragrunt/terraform ./
 COPY --from=builder /builder/terragrunt/terragrunt_linux_amd64 ./terragrunt
 
 COPY entrypoint.bash /builder/entrypoint.bash
-COPY bettergrunt_apply.sh /builder/bettergrunt_apply.sh
+COPY bettergrunt_plan.sh /builder/bettergrunt_init.sh
 COPY bettergrunt_plan.sh /builder/bettergrunt_plan.sh
+COPY bettergrunt_apply.sh /builder/bettergrunt_apply.sh
+
 
 RUN chmod +x ./jq
 RUN chmod +x kpt
