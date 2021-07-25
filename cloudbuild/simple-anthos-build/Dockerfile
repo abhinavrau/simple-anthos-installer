@@ -11,6 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.FROM gcr.io/cloud-builders/gcloud as builder
+FROM gcr.io/cloud-builders/gcloud as builder
 
 ARG TERRAFORM_VERSION
 ARG TERRAFORM_VERSION_SHA256SUM
