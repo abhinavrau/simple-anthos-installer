@@ -39,7 +39,7 @@ generate "backend" {
 
 dependency "gke" {
 
-  config_path = "../../2_gke/gke_1"
+  config_path = "../../../2_gke/gke_1"
 
   # Configure mock outputs for the `validate` command that are returned when there are no outputs available (e.g the
   # module hasn't been applied yet.
@@ -49,6 +49,7 @@ dependency "gke" {
     location = "fake"
     endpoint = "fake"
   }
+  
 }
 
 dependency "gateway_cert" {
@@ -59,7 +60,7 @@ dependency "gateway_cert" {
     ca_private_key_pem     = "fake"
     ca_cert_pem = "fake"
   }
-
+  
 }
 
 terraform {

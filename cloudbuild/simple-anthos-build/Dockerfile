@@ -60,8 +60,11 @@ COPY --from=builder /builder/terragrunt/terraform ./
 COPY --from=builder /builder/terragrunt/terragrunt_linux_amd64 ./terragrunt
 
 COPY entrypoint.bash /builder/entrypoint.bash
-COPY bettergrunt_apply.sh /builder/bettergrunt_apply.sh
+COPY bettergrunt_init.sh /builder/bettergrunt_init.sh
 COPY bettergrunt_plan.sh /builder/bettergrunt_plan.sh
+COPY bettergrunt_apply.sh /builder/bettergrunt_apply.sh
+COPY tfmask ./tfmask 
+
 
 RUN chmod +x ./jq
 RUN chmod +x kpt

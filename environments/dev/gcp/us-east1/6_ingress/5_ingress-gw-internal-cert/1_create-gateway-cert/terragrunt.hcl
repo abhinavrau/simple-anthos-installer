@@ -37,6 +37,9 @@ generate "backend" {
   EOF
 }
 
+dependencies {
+  paths = ["../../4_ingress-config"]
+}
 
 terraform {
 
