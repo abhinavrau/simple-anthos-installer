@@ -1,0 +1,29 @@
+digraph {
+	"us-east1/0_activate-apis" ;
+	"us-east1/1_vpc" ;
+	"us-east1/1_vpc" -> "us-east1/0_activate-apis";
+	"us-east1/2_gke/gke_1" ;
+	"us-east1/2_gke/gke_1" -> "us-east1/1_vpc";
+	"us-east1/3_hub_connect/gke_1" ;
+	"us-east1/3_hub_connect/gke_1" -> "us-east1/2_gke/gke_1";
+	"us-east1/4_acm/gke_1" ;
+	"us-east1/4_acm/gke_1" -> "us-east1/3_hub_connect/gke_1";
+	"us-east1/4_acm/gke_1" -> "us-east1/2_gke/gke_1";
+	"us-east1/5_asm/gke_1" ;
+	"us-east1/5_asm/gke_1" -> "us-east1/3_hub_connect/gke_1";
+	"us-east1/5_asm/gke_1" -> "us-east1/4_acm/gke_1";
+	"us-east1/5_asm/gke_1" -> "us-east1/2_gke/gke_1";
+	"us-east1/6_ingress/1_ingress-external-ip" ;
+	"us-east1/6_ingress/2_ingress-dns" ;
+	"us-east1/6_ingress/2_ingress-dns" -> "us-east1/6_ingress/1_ingress-external-ip";
+	"us-east1/6_ingress/3_ingress-public-cert" ;
+	"us-east1/6_ingress/3_ingress-public-cert" -> "us-east1/2_gke/gke_1";
+	"us-east1/6_ingress/3_ingress-public-cert" -> "us-east1/6_ingress/2_ingress-dns";
+	"us-east1/6_ingress/4_ingress-config" ;
+	"us-east1/6_ingress/4_ingress-config" -> "us-east1/2_gke/gke_1";
+	"us-east1/6_ingress/4_ingress-config" -> "us-east1/6_ingress/1_ingress-external-ip";
+	"us-east1/6_ingress/5_ingress-gw-internal-cert/1_create-gateway-cert" ;
+	"us-east1/6_ingress/5_ingress-gw-internal-cert/2_install_gateway_cert" ;
+	"us-east1/6_ingress/5_ingress-gw-internal-cert/2_install_gateway_cert" -> "us-east1/2_gke/gke_1";
+	"us-east1/6_ingress/5_ingress-gw-internal-cert/2_install_gateway_cert" -> "us-east1/6_ingress/5_ingress-gw-internal-cert/1_create-gateway-cert";
+}
