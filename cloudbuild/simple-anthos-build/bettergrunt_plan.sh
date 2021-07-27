@@ -24,7 +24,7 @@
 export TFMASK_CHAR="#"
 export TFMASK_VALUES_REGEX="(?i)^.*[^a-zA-Z](oauth|secret|token|password|key|result|id).*$"
 # Store stdout and stderr
-PLAN_OUTPUT=$(terragrunt run-all plan --terragrunt-non-interactive -out=$1 2>&1 >/dev/null)
+PLAN_OUTPUT=$(terragrunt run-all plan --terragrunt-non-interactive -out=$1 2>&1 > /dev/null)
 
 # Show clean plan if successful via `show`,
 # show full plan command output if errors

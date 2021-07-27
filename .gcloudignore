@@ -22,8 +22,12 @@ crash.log
 # Ignore platform automation's default output
 **/output.json
 
+.git
 .idea
-
+.github
+cloudbuild/
+images/
+.vscode
 *.png
 *.md
 

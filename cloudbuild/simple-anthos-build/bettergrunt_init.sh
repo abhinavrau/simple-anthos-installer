@@ -20,10 +20,9 @@
 # Based on code from https://gist.github.com/angeloskaltsikis/f5ded5e94495e6254a9171365bcfaf7a#gistcomment-3492126
 
 #
-# Store stdout and stderr
-VALIDATE_OUTPUT=$(terragrunt run-all validate --terragrunt-non-interactive) 
+# Store stdout and stderr since terragrunt produces a lot of unnecessary output we don't want to see during builds
+VALIDATE_OUTPUT=$(terragrunt run-all validate --terragrunt-non-interactive 2>&1 >/dev/null) 
 
-# Show clean plan if successful via `show`,
-# show full plan command output if errors
+# Show output when there is an error
 status=$?
-[ $status -eq 0 ] && echo "Validate success" || echo "$VALIDATE_OUTPUT"
+[ $status -eq 0 ] && echo "Terraform Initialized Successfully" || echo "$VALIDATE_OUTPUT"

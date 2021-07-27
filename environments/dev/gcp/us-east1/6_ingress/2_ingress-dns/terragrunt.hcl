@@ -43,11 +43,11 @@ dependency "ingress-external-ip" {
 
   # Configure mock outputs for the `validate` command that are returned when there are no outputs available (e.g the
   # module hasn't been applied yet.
-  mock_outputs_allowed_terraform_commands = ["validate"]
+  mock_outputs_allowed_terraform_commands = ["init", "validate"]
   mock_outputs = {
     addresses = ["mock-address"]
-
   }
+  
 }
 
 terraform {
@@ -59,6 +59,7 @@ terraform {
 
 inputs = {
   project     = local.project_id
+  # The domain name created will be `${environment_name}.frontend.endpoints.${project_id}.cloud.goog`
   name        = "${local.environment_name}-frontend"
   external_ip = dependency.ingress-external-ip.outputs.addresses[0]
 

@@ -39,6 +39,10 @@ generate "backend" {
   EOF
 }
 
+dependencies {
+  paths = ["../../5_asm/gke_1"]
+}
+
 terraform {
 
   source = "github.com/terraform-google-modules/terraform-google-address?ref=v2.1.1"
